@@ -1,0 +1,7 @@
+node_modules/
+db/gauge.db
+db/gauge.db-shm
+db/gauge.db-wal
+.env
+
+db/gauge3.db*

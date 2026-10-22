@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gauge — a calibration instrument for your own judgment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <p class="label">GAUGE / A CALIBRATION INSTRUMENT — PREDICT → ANSWER → REVEAL → REFLECT</p>
+  <h1>Know when you <em>actually</em> know it.</h1>
+  <p class="lede">
+    Before every question you say how sure you are. Gauge compares that with what happened and builds a
+    profile of how you judge: when you can trust your confidence, where you feel sure but are wrong,
+    and what to try next. Every number comes from your own recorded answers.
+  </p>
+
+  <div class="card" id="loginCard">
+    <div class="card-label"><span>SESSION</span></div>
+    <p class="legend-note" style="margin:0 0 14px;">Enter a name to start or resume your history.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <input id="nameInput" type="text" placeholder="e.g. priya" class="text-input">
+      <button class="primary-btn" id="startBtn">Start session</button>
+    </div>
+  </div>
+
+  <div id="appArea" style="display:none;">
+    <div class="card" id="startCard">
+      <div class="card-label"><span>YOUR ROUNDS</span><span id="userLabel"></span></div>
+      <p class="problem-text" id="startText"></p>
+      <button class="primary-btn" id="mixedBtn">Start a round of 10</button>
+      <button class="primary-btn" id="targetBtn" style="display:none;margin-left:8px;"></button>
+      <button class="ghost-btn" id="profileBtn" style="display:none;margin-left:8px;">View my profile</button>
+    </div>
+
+    <div class="card" id="problemCard" style="display:none;">
+      <div class="card-label"><span id="progressLabel"></span><span id="topicLabel"></span></div>
+      <p class="problem-text" id="problemText"></p>
+
+      <div id="predictPhase">
+        <div class="conf-row">
+          <label for="confSlider">How confident are you that you will pick the right answer? (25% is a pure guess)</label>
+          <input type="range" id="confSlider" min="25" max="100" value="50" step="5">
+          <div class="conf-value"><span id="confVal">50</span>%</div>
+        </div>
+        <button class="primary-btn" id="lockBtn">Lock in confidence</button>
+      </div>
+
+      <div id="answerPhase" style="display:none;"><div class="options" id="optionsList"></div></div>
+
+      <div id="revealPhase" style="display:none;">
+        <p class="reveal-line" id="revealLine"></p>
+        <p class="legend-note" id="explainLine"></p>
+        <label for="reflectInput" class="legend-note" style="display:block;margin-top:14px;">Why did you pick that answer? (optional, saved to your reasoning log)</label>
+        <textarea id="reflectInput" class="text-input" rows="2" style="width:100%;margin-top:6px;"></textarea>
+        <button class="primary-btn" id="nextBtn" style="margin-top:14px;">Next →</button>
+      </div>
+    </div>
+
+    <div class="card" id="summaryCard" style="display:none;">
+      <div class="card-label"><span>JUDGMENT PROFILE</span><span id="sumSub"></span></div>
+      <div id="roundBox"></div>
+      <div id="profileBox"></div>
+      <div class="card-label" style="margin-top:22px;"><span>CONFIDENCE VS ACTUAL ACCURACY</span></div>
+      <div class="chart-wrap"><svg id="relSvg" width="700" height="240" viewBox="0 0 700 240"></svg></div>
+      <p class="legend-note">Green bar: how often you were right at that confidence level. Amber line: how confident you said you were. Well calibrated means the line sits on the bar.</p>
+      <p class="legend-note">These are patterns in your answers in this app, not facts about your intelligence or personality.</p>
+      <button class="primary-btn" id="homeBtn" style="margin-top:14px;">Continue</button>
+    </div>
+
+    <footer>
+      <a class="link" href="educator.html">Educator view →</a>
+      <p>DATA: SQLITE (db/gauge3.db) — SURVIVES RESTARTS</p>
+    </footer>
+  </div>
+</div>
+<script src="chart.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

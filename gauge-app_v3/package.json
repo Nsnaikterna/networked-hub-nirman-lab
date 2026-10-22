@@ -1,0 +1,14 @@
+{
+  "name": "gauge-calibration",
+  "version": "1.0.0",
+  "description": "A calibration instrument for self-assessed judgment. Predict -> act -> reveal -> compare, backed by a real database.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.3.0",
+    "express": "^4.19.2"
+  }
+}

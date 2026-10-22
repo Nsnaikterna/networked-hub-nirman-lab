@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gauge — Educator view</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <p class="label">GAUGE / EDUCATOR VIEW</p>
+  <h1>Where does the class <em>freeze</em>?</h1>
+  <p class="lede">
+    Teachers normally see scores. This view shows what scores hide: how sure each student was,
+    whether that confidence was justified, and what they say their reasoning was.
+    It refreshes every 5 seconds, so it updates live while students answer.
+  </p>
+
+  <div class="card">
+    <div class="card-label"><span>CLASS OVERVIEW</span><span>LIVE</span></div>
+    <div class="stat-grid" id="overview"></div>
+    <div class="chart-wrap"><svg id="relSvg" width="700" height="240" viewBox="0 0 700 240"></svg></div>
+    <p class="legend-note">Green bar: how often the class was actually right at that confidence level. Amber line: how confident they said they were.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-label"><span>JUDGMENT PROFILES IN THE CLASS</span></div>
+    <div class="quad" id="groups"></div>
+    <div class="card-label" style="margin-top:20px;"><span>STUDENTS — LARGEST CALIBRATION GAP FIRST</span></div>
+    <div id="students"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-label"><span>OVERCONFIDENCE TRAPS — QUESTIONS WHERE CONFIDENT STUDENTS WERE WRONG</span></div>
+    <div id="traps"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-label"><span>RECENT STUDENT REASONING</span></div>
+    <div id="reasons"></div>
+  </div>
+
+  <footer><a class="link" href="index.html">← Student view</a></footer>
+</div>
+<script src="chart.js"></script>
+<script src="educator.js"></script>
+</body>
+</html>
